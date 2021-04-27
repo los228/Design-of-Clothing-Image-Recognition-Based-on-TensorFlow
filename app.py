@@ -15,10 +15,10 @@ app = Flask(__name__)
 
 
 # 调用pickle库的load方法，加载图像数据处理时需要减去的像素均值pixel_mean
-file = open('D:/2020大四上学期大学课程及其相关/1/resources\pixel_mean.pickle', 'rb')
+file = open('D:\游戏测试工作\Design-of-Clothing-Image-Recognition-Based-on-TensorFlow/resources\pixel_mean.pickle', 'rb')
 pixel_mean = pickle.load(file)
 
-model_filePath = 'D:/2020大四上学期大学课程及其相关/1/model.h5'
+model_filePath = 'D:\游戏测试工作\Design-of-Clothing-Image-Recognition-Based-on-TensorFlow/model.h5'
 model = load_model(model_filePath)
 model.compile(
     optimizer='adam',
@@ -70,7 +70,7 @@ def anyname_you_like():
     imageFileName = received_file.filename
     if received_file:
         # 保存接收的图片到指定文件夹
-        received_dirPath = 'D:/2020大四上学期大学课程及其相关/1/resources/received_images'
+        received_dirPath = 'D:\游戏测试工作\Design-of-Clothing-Image-Recognition-Based-on-TensorFlow/received_images'
         if not os.path.isdir(received_dirPath):
             os.makedirs(received_dirPath)
         imageFilePath = os.path.join(received_dirPath, imageFileName)
@@ -93,7 +93,7 @@ def index_page():
 
 if __name__ == "__main__":
     print('在开启服务前，先测试predict_image函数')
-    imageFilePath = 'D:/2020大四上学期大学课程及其相关/1/resources/001.jpg'
+    imageFilePath = 'D:\游戏测试工作\Design-of-Clothing-Image-Recognition-Based-on-TensorFlow/resources/001.jpg'
     predict_className = predict_image(model, imageFilePath)
 
     app.run("127.0.0.1", port=5000)
